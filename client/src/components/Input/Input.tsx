@@ -1,12 +1,16 @@
 import React, { Component, ChangeEvent } from "react";
+import { Input as MaterialUiInput } from "@material-ui/core";
 
 interface IProps {
   value: string;
-  className?: string;
   id: string;
   isRequired?: boolean;
+  isDisabled?: boolean;
+  hasError?: boolean;
   label?: string;
   onChange: (value: string, id: string) => void;
+  color?: "primary" | "secondary";
+  placeholder?: string;
 }
 
 class Input extends Component<IProps> {
@@ -15,20 +19,27 @@ class Input extends Component<IProps> {
   };
 
   public render() {
-    const { className, id, value, label } = this.props;
+    const {
+      placeholder,
+      color,
+      id,
+      value,
+      hasError,
+      isDisabled,
+      isRequired
+    } = this.props;
     return (
-      <label
-        className={`input${className ? ` ${className}` : ""}`}
-        htmlFor={id}
-      >
-        <input
-          type="text"
-          value={value}
-          required={this.props.isRequired}
-          onChange={this.handleChange}
-        />
-        {label ? <span>{label}</span> : null}
-      </label>
+      <MaterialUiInput
+        type="text"
+        id={id}
+        value={value}
+        required={isRequired}
+        disabled={isDisabled}
+        error={hasError}
+        onChange={this.handleChange}
+        color={color}
+        placeholder={placeholder}
+      />
     );
   }
 }

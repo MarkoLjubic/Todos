@@ -2,15 +2,15 @@ import React, { Component } from "react";
 
 import { ITodo } from "../../models/Todo";
 import todosService from "../../services/todosService";
-import TodosList from "./TodosList";
-import TodoForm from "./TodoForm";
+import TodosList from "../../containers/TodoList/TodosList";
+import TodoForm from "../../containers/TodoList/TodoForm";
 
 interface IState {
   todos: ITodo[];
   isLoading: boolean;
 }
 
-export default class TodosView extends Component<{}, IState> {
+export default class Dashboard extends Component<{}, IState> {
   state = {
     todos: [],
     isLoading: true

@@ -1,11 +1,11 @@
 import React, { Component, ChangeEvent } from "react";
+import { Checkbox as MatrialUiCheckbox } from "@material-ui/core";
 
 interface IProps {
   value: boolean;
-  className?: string;
   id: string;
-  label?: string;
   onChange: (value: boolean, id: string) => void;
+  color?: "primary" | "secondary" | "default";
 }
 
 class Checkbox extends Component<IProps> {
@@ -14,20 +14,14 @@ class Checkbox extends Component<IProps> {
   };
 
   public render() {
-    const { className, id, value, label } = this.props;
+    const { id, value, color } = this.props;
     return (
-      <label
-        className={`checkbox${className ? ` ${className}` : ""}`}
-        htmlFor={id}
-      >
-        <input
-          id={id}
-          type="checkbox"
-          checked={value}
-          onChange={this.handleChange}
-        />
-        {label && <span>{label}</span>}
-      </label>
+      <MatrialUiCheckbox
+        checked={value}
+        id={id}
+        onChange={this.handleChange}
+        color={color || "primary"}
+      />
     );
   }
 }

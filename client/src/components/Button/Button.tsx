@@ -1,21 +1,19 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+import { Button as MaterialUiButton } from "@material-ui/core";
 
 interface IButtonProps {
   action?: (...args: any[]) => void;
   actionProps?: any[];
-  className?: string;
   isDisabled?: boolean;
-  title?: string;
   type?: "button" | "submit" | "reset";
+  color?: "primary" | "secondary" | "default";
 }
 
 const Button: React.FunctionComponent<IButtonProps> = ({
   action,
   actionProps,
-  className,
+  color,
   isDisabled = false,
-  title,
   type = "button",
   children
 }) => {
@@ -30,15 +28,15 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   };
 
   return (
-    <button
-      className={`button${className ? ` ${className}` : ""}`}
+    <MaterialUiButton
+      color={color}
       disabled={isDisabled}
       onClick={handleClick}
-      title={title}
+      variant="contained"
       type={type}
     >
       {children}
-    </button>
+    </MaterialUiButton>
   );
 };
 

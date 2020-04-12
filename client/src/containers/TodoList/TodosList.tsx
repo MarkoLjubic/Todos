@@ -2,6 +2,7 @@ import React from "react";
 
 import { ITodo } from "../../models/Todo";
 import TodoItem from "./TodoItem";
+import List from "@material-ui/core/List";
 
 interface ITodoItemProps {
   todos: ITodo[];
@@ -19,7 +20,7 @@ const TodosList: React.FunctionComponent<ITodoItemProps> = ({
   }
 
   return (
-    <div>
+    <List>
       {todos.map((todo: ITodo) => (
         <TodoItem
           key={todo.id}
@@ -28,7 +29,7 @@ const TodosList: React.FunctionComponent<ITodoItemProps> = ({
           deleteTodo={deleteTodo}
         />
       ))}
-    </div>
+    </List>
   );
 };
 
