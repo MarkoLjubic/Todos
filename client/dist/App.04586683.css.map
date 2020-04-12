@@ -1,0 +1,1 @@
+{"version":3,"sources":["components/Checkbox/Checkbox.scss"],"names":[],"mappings":"AAAA,SAAS,CAAC;EACR,gBAAgB,EAAE,GAAG,GACtB","file":"App.04586683.css","sourceRoot":"../src","sourcesContent":[".checkbox {\n  background-color: red;\n}\n"]}
