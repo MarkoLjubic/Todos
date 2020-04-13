@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import TodosView from "./views/Dashboard";
+import TodosDashboard from "./views/TodosDashboard";
 
 const App = () => {
-  return <TodosView />;
+  return <TodosDashboard />;
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));

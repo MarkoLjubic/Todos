@@ -2,15 +2,15 @@ import React, { Component } from "react";
 
 import { ITodo } from "../../models/Todo";
 import todosService from "../../services/todosService";
-import TodosList from "../../containers/TodoList/TodosList";
-import TodoForm from "../../containers/TodoList/TodoForm";
+import Grid from "./Grid";
+import TodosOrganizationWidget from "./TodosOrganizationWidget";
 
 interface IState {
   todos: ITodo[];
   isLoading: boolean;
 }
 
-export default class Dashboard extends Component<{}, IState> {
+export default class TodosDashboard extends Component<{}, IState> {
   state = {
     todos: [],
     isLoading: true
@@ -43,7 +43,7 @@ export default class Dashboard extends Component<{}, IState> {
     });
   };
 
-  public setTodosCheckState = (id: string, isChecked: boolean): void => {
+  public setTodoCheckedState = (id: string, isChecked: boolean): void => {
     todosService.setTodoCheckedState(id, isChecked).then(newTodo => {
       if (newTodo) {
         this.setState(state => ({
@@ -55,19 +55,19 @@ export default class Dashboard extends Component<{}, IState> {
 
   public render() {
     return (
-      <div className="todos-view">
-        <h1>TODO:</h1>
-        {this.state.isLoading ? (
-          <div>Loading</div>
-        ) : (
-          <TodosList
+      <Grid
+        leftComponent={
+          <TodosOrganizationWidget
             todos={this.state.todos}
+            createTodo={this.createTodo}
             deleteTodo={this.deleteTodo}
-            setTodosCheckedState={this.setTodosCheckState}
+            setTodoCheckedState={this.setTodoCheckedState}
+            isLoading={this.state.isLoading}
           />
-        )}
-        <TodoForm createTodo={this.createTodo} />
-      </div>
+        }
+        rightBottomComponent={() => <div />}
+        rightTopComponent={() => <div />}
+      />
     );
   }
 }

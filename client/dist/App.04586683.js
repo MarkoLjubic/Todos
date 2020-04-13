@@ -79336,7 +79336,7 @@ var Button = function Button(_ref) {
 };
 
 exports.default = Button;
-},{"react":"../node_modules/react/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"containers/TodoList/TodoItem.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"containers/TodosList/TodoItem.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -79395,7 +79395,7 @@ var TodoItem = function TodoItem(_ref) {
 };
 
 exports.default = TodoItem;
-},{"react":"../node_modules/react/index.js","@material-ui/core/ListItem":"../node_modules/@material-ui/core/esm/ListItem/index.js","../../components/Checkbox/Checkbox":"components/Checkbox/Checkbox.tsx","../../components/Button/Button":"components/Button/Button.tsx","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"containers/TodoList/TodosList.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@material-ui/core/ListItem":"../node_modules/@material-ui/core/esm/ListItem/index.js","../../components/Checkbox/Checkbox":"components/Checkbox/Checkbox.tsx","../../components/Button/Button":"components/Button/Button.tsx","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"containers/TodosList/TodosList.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -79417,7 +79417,7 @@ var List_1 = __importDefault(require("@material-ui/core/List"));
 var TodosList = function TodosList(_ref) {
   var todos = _ref.todos,
       deleteTodo = _ref.deleteTodo,
-      setTodosCheckedState = _ref.setTodosCheckedState;
+      setTodoCheckedState = _ref.setTodoCheckedState;
 
   if (!todos.length) {
     return react_1.default.createElement("div", null, "No todos");
@@ -79427,14 +79427,30 @@ var TodosList = function TodosList(_ref) {
     return react_1.default.createElement(TodoItem_1.default, {
       key: todo.id,
       todo: todo,
-      setTodoCheckedState: setTodosCheckedState,
+      setTodoCheckedState: setTodoCheckedState,
       deleteTodo: deleteTodo
     });
   }));
 };
 
 exports.default = TodosList;
-},{"react":"../node_modules/react/index.js","./TodoItem":"containers/TodoList/TodoItem.tsx","@material-ui/core/List":"../node_modules/@material-ui/core/esm/List/index.js"}],"components/Input/Input.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./TodoItem":"containers/TodosList/TodoItem.tsx","@material-ui/core/List":"../node_modules/@material-ui/core/esm/List/index.js"}],"containers/TodosList/index.ts":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var TodosList_1 = __importDefault(require("./TodosList"));
+
+exports.default = TodosList_1.default;
+},{"./TodosList":"containers/TodosList/TodosList.tsx"}],"components/Input/Input.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -79519,7 +79535,7 @@ var Input = /*#__PURE__*/function (_react_1$Component) {
 }(react_1.Component);
 
 exports.default = Input;
-},{"react":"../node_modules/react/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"containers/TodoList/TodoForm.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"containers/TodosForm/TodoForm.tsx":[function(require,module,exports) {
 "use strict";
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -79606,7 +79622,23 @@ var TodoForm = function TodoForm(_ref) {
 };
 
 exports.default = TodoForm;
-},{"react":"../node_modules/react/index.js","../../components/Input/Input":"components/Input/Input.tsx","../../components/Button/Button":"components/Button/Button.tsx"}],"views/Dashboard/Dashboard.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../components/Input/Input":"components/Input/Input.tsx","../../components/Button/Button":"components/Button/Button.tsx"}],"containers/TodosForm/index.ts":[function(require,module,exports) {
+"use strict";
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var TodoForm_1 = __importDefault(require("./TodoForm"));
+
+exports.default = TodoForm_1.default;
+},{"./TodoForm":"containers/TodosForm/TodoForm.tsx"}],"views/TodosDashboard/TodosDashboard.tsx":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -79659,19 +79691,19 @@ var react_1 = __importStar(require("react"));
 
 var todosService_1 = __importDefault(require("../../services/todosService"));
 
-var TodosList_1 = __importDefault(require("../../containers/TodoList/TodosList"));
+var TodosList_1 = __importDefault(require("../../containers/TodosList"));
 
-var TodoForm_1 = __importDefault(require("../../containers/TodoList/TodoForm"));
+var TodosForm_1 = __importDefault(require("../../containers/TodosForm"));
 
-var Dashboard = /*#__PURE__*/function (_react_1$Component) {
-  _inherits(Dashboard, _react_1$Component);
+var TodosDashboard = /*#__PURE__*/function (_react_1$Component) {
+  _inherits(TodosDashboard, _react_1$Component);
 
-  function Dashboard() {
+  function TodosDashboard() {
     var _this;
 
-    _classCallCheck(this, Dashboard);
+    _classCallCheck(this, TodosDashboard);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TodosDashboard).apply(this, arguments));
     _this.state = {
       todos: [],
       isLoading: true
@@ -79701,7 +79733,7 @@ var Dashboard = /*#__PURE__*/function (_react_1$Component) {
       });
     };
 
-    _this.setTodosCheckState = function (id, isChecked) {
+    _this.setTodoCheckedState = function (id, isChecked) {
       todosService_1.default.setTodoCheckedState(id, isChecked).then(function (newTodo) {
         if (newTodo) {
           _this.setState(function (state) {
@@ -79718,7 +79750,7 @@ var Dashboard = /*#__PURE__*/function (_react_1$Component) {
     return _this;
   }
 
-  _createClass(Dashboard, [{
+  _createClass(TodosDashboard, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -79735,21 +79767,21 @@ var Dashboard = /*#__PURE__*/function (_react_1$Component) {
     value: function render() {
       return react_1.default.createElement("div", {
         className: "todos-view"
-      }, react_1.default.createElement("h1", null, "TODO:"), this.state.isLoading ? react_1.default.createElement("div", null, "Loading") : react_1.default.createElement(TodosList_1.default, {
+      }, this.state.isLoading ? react_1.default.createElement("div", null, "Loading") : react_1.default.createElement(TodosList_1.default, {
         todos: this.state.todos,
         deleteTodo: this.deleteTodo,
-        setTodosCheckedState: this.setTodosCheckState
-      }), react_1.default.createElement(TodoForm_1.default, {
+        setTodoCheckedState: this.setTodoCheckedState
+      }), react_1.default.createElement(TodosForm_1.default, {
         createTodo: this.createTodo
       }));
     }
   }]);
 
-  return Dashboard;
+  return TodosDashboard;
 }(react_1.Component);
 
-exports.default = Dashboard;
-},{"react":"../node_modules/react/index.js","../../services/todosService":"services/todosService.ts","../../containers/TodoList/TodosList":"containers/TodoList/TodosList.tsx","../../containers/TodoList/TodoForm":"containers/TodoList/TodoForm.tsx"}],"views/Dashboard/index.ts":[function(require,module,exports) {
+exports.default = TodosDashboard;
+},{"react":"../node_modules/react/index.js","../../services/todosService":"services/todosService.ts","../../containers/TodosList":"containers/TodosList/index.ts","../../containers/TodosForm":"containers/TodosForm/index.ts"}],"views/TodosDashboard/index.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -79762,10 +79794,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var Dashboard_1 = __importDefault(require("./Dashboard"));
+var TodosDashboard_1 = __importDefault(require("./TodosDashboard"));
 
-exports.default = Dashboard_1.default;
-},{"./Dashboard":"views/Dashboard/Dashboard.tsx"}],"App.tsx":[function(require,module,exports) {
+exports.default = TodosDashboard_1.default;
+},{"./TodosDashboard":"views/TodosDashboard/TodosDashboard.tsx"}],"App.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -79782,14 +79814,14 @@ var react_1 = __importDefault(require("react"));
 
 var react_dom_1 = __importDefault(require("react-dom"));
 
-var Dashboard_1 = __importDefault(require("./views/Dashboard"));
+var TodosDashboard_1 = __importDefault(require("./views/TodosDashboard"));
 
 var App = function App() {
-  return react_1.default.createElement(Dashboard_1.default, null);
+  return react_1.default.createElement(TodosDashboard_1.default, null);
 };
 
 react_dom_1.default.render(react_1.default.createElement(App, null), document.getElementById("root"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./views/Dashboard":"views/Dashboard/index.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./views/TodosDashboard":"views/TodosDashboard/index.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

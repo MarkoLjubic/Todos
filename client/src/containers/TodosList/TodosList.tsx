@@ -7,13 +7,13 @@ import List from "@material-ui/core/List";
 interface ITodoItemProps {
   todos: ITodo[];
   deleteTodo: (id: string) => void;
-  setTodosCheckedState: (id: string, isChecked: boolean) => void;
+  setTodoCheckedState: (id: string, isChecked: boolean) => void;
 }
 
 const TodosList: React.FunctionComponent<ITodoItemProps> = ({
   todos,
   deleteTodo,
-  setTodosCheckedState
+  setTodoCheckedState
 }) => {
   if (!todos.length) {
     return <div>No todos</div>;
@@ -25,7 +25,7 @@ const TodosList: React.FunctionComponent<ITodoItemProps> = ({
         <TodoItem
           key={todo.id}
           todo={todo}
-          setTodoCheckedState={setTodosCheckedState}
+          setTodoCheckedState={setTodoCheckedState}
           deleteTodo={deleteTodo}
         />
       ))}
