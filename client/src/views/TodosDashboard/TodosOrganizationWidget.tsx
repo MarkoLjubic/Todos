@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { CircularProgress } from "@material-ui/core";
 
 import { ITodo } from "../../models/Todo";
 import TodoForm from "../../containers/TodosForm/";
@@ -22,7 +23,7 @@ const TodosOrganizationWidget: React.FunctionComponent<ITodoItemProps> = ({
   return (
     <Fragment>
       {isLoading ? (
-        <div>Loading</div>
+        <CircularProgress />
       ) : (
         <TodosList
           todos={todos}

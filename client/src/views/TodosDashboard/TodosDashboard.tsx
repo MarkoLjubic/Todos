@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 import { ITodo } from "../../models/Todo";
 import todosService from "../../services/todosService";
-import TodosList from "../../containers/TodosList";
-import TodoForm from "../../containers/TodosForm";
+import Grid from "./Grid";
+import TodosOrganizationWidget from "./TodosOrganizationWidget";
 
 interface IState {
   todos: ITodo[];
@@ -55,18 +55,19 @@ export default class TodosDashboard extends Component<{}, IState> {
 
   public render() {
     return (
-      <div className="todos-view">
-        {this.state.isLoading ? (
-          <div>Loading</div>
-        ) : (
-          <TodosList
+      <Grid
+        leftComponent={
+          <TodosOrganizationWidget
             todos={this.state.todos}
+            createTodo={this.createTodo}
             deleteTodo={this.deleteTodo}
             setTodoCheckedState={this.setTodoCheckedState}
+            isLoading={this.state.isLoading}
           />
-        )}
-        <TodoForm createTodo={this.createTodo} />
-      </div>
+        }
+        rightBottomComponent={() => <div />}
+        rightTopComponent={() => <div />}
+      />
     );
   }
 }
