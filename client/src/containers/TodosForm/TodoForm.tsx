@@ -1,13 +1,12 @@
-import React, { Component, useState, SyntheticEvent } from "react";
+import React, { Component, useState, SyntheticEvent, useContext } from "react";
 
+import TodosContext from "../../_context/TodosContext";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 
-interface ITodoFormProps {
-  createTodo: (title: string, description: string) => void;
-}
+const TodoForm: React.FunctionComponent<{}> = () => {
+  const { createTodo } = useContext(TodosContext);
 
-const TodoForm: React.FunctionComponent<ITodoFormProps> = ({ createTodo }) => {
   const [values, setValues] = useState({ title: "", description: "" });
 
   const handleSubmit = (event: SyntheticEvent) => {
